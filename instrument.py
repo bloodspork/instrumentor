@@ -1,7 +1,6 @@
 # author: bloodspork
 # date  : 20220427
 
-from audioop import avg
 import time
 import functools
 import logging
