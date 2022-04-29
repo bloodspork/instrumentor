@@ -23,8 +23,11 @@ def setup_logging():
 if __name__ == "__main__":
     setup_logging()
 
+    start_time = time.perf_counter()
+
     test_func_sleep_3()
     for i in range(7):
         test_func_sleep_1()
 
-    log_duration_summary()
+    end_time = time.perf_counter()
+    log_duration_summary(end_time - start_time)

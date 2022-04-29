@@ -28,7 +28,7 @@ def timeit(func):
         return ret
     return wrapper
 
-def log_duration_summary(loggingLevel = logging.DEBUG):
+def log_duration_summary(overallDuration, loggingLevel = logging.DEBUG):
     ftd = get_func_timing_dict()
     msg = "Durations Summary\n"
     for funcName, duration_list in ftd.items():
@@ -38,7 +38,8 @@ def log_duration_summary(loggingLevel = logging.DEBUG):
         msg += funcName.rjust(30, ' ')
         msg += f"  #calls: {str(num_calls).rjust(10)}" \
                f"  avg: {str(round(avg_time, 3)).rjust(10, ' ')}" \
-               f"  tot: {str(round(tot_time, 3)).rjust(10, ' ')}\n"             
+               f"  tot: {str(round(tot_time, 3)).rjust(10, ' ')}" \
+               f"  pct_total_overall: {str(round(tot_time / overallDuration * 100)).rjust(10, ' ')}%\n"             
     logging.log(loggingLevel, msg)
 
 
