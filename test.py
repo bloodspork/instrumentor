@@ -1,7 +1,7 @@
 import time
 import logging
 
-from instrument import timeit, log_duration_summary
+from instrument import timeit, log_duration_summary, RegionTimer
 
 @timeit
 def test_func_sleep_1():
@@ -28,6 +28,9 @@ if __name__ == "__main__":
     test_func_sleep_3()
     for i in range(7):
         test_func_sleep_1()
+
+    with RegionTimer("my region"):
+        time.sleep(2)
 
     end_time = time.perf_counter()
     log_duration_summary(end_time - start_time)
