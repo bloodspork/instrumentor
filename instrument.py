@@ -52,7 +52,7 @@ def log_duration_summary(overallDuration, loggingLevel=logging.DEBUG):
     ftd = get_func_timing_dict()
     msg = ""
     accounted_tot = 0
-    for funcName, duration_list in ftd.items():
+    for funcName, duration_list in sorted(ftd.items()):
         tot_time = sum(duration_list)
         num_calls = len(duration_list)
         avg_time = tot_time / num_calls
